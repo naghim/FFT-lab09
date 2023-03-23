@@ -5,7 +5,7 @@ A mai labororán az OpenGL-t fogjuk használni s ezzel fogunk elemenseket megjel
 
 ### OpenGL összekötése QT-vel
 
-A projektfájlt egészítsük ki a következőkkel: 
+A projektfájlt (```.pro```) egészítsük ki a következőkkel: 
 ```QT += opengl```
 , illetve ```LIBS += -lOpengl32```
 A headerbe írjuk be az alábbi könyvtárakat:
