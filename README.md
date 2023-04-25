@@ -26,6 +26,19 @@ A headerbe írjuk be az alábbi könyvtárakat:
 
 ![2](https://i.ibb.co/jRJWn9X/kocka.png)
 
+A perspektíva beállításához segédfüggvény: 
+``` cpp
+void glPerspective( GLdouble fov, GLdouble aspectRatio, GLdouble zNear, GLdouble zFar )
+{
+        GLdouble rFov = fov * 3.14159265 / 180.0;
+        glFrustum( -zNear * tan( rFov / 2.0 ) * aspectRatio,
+                  zNear * tan( rFov / 2.0 ) * aspectRatio,
+                  -zNear * tan( rFov / 2.0 ),
+                  zNear * tan( rFov / 2.0 ),
+                  zNear, zFar );
+}
+```
+
 3. Írjunk egy programot, mely OpenGL segítségével megjelenít egy megvilágított színes [tetraédert](https://hu.wikipedia.org/wiki/Tetraéder), melyet az „wasdqe” és „rt” billentyűk segítségével mozgatni és forgatni tudunk:
    - előre-hátra mozgatás (w-s)
    - jobbra-balra mozgatás (a-d)
