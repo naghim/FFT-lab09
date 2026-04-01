@@ -2,14 +2,19 @@
 
 ## OpenGL
 
-A mai labororán az OpenGL-t fogjuk használni és ezzel fogunk elemenseket megjeleníteni, mozgatni. Az OpenGL (Open Graphics Library) egy részletesen kidolgozott szabvány. Olyan API-t takar, amely segítségével egy egyszerű, szabványos felületen keresztül megvalósítható a grafikus kártya kezelése és a háromdimenziós grafika programozása. Az interfész több ezer különböző függvényhívásból áll, melynek segítségével a programozók szinte közvetlenül vezérelhetik a grafikus kártyát, segítségükkel 3 dimenziós alakzatokat rajzolhatnak ki, és a kirajzolás módját szabályozhatják. Széleskörűen használják a virtuális valóság létrehozatalában, a tudományos élet különböző területein, és szimulátorok esetében is.
+A mai laboron az OpenGL-t fogjuk használni és ezzel fogunk elemenseket megjeleníteni, mozgatni. Az OpenGL (Open Graphics Library) egy részletesen kidolgozott szabvány. Olyan API-t takar, amely segítségével egy egyszerű, szabványos felületen keresztül megvalósítható a grafikus kártya kezelése és a háromdimenziós grafika programozása. Az interfész több ezer különböző függvényhívásból áll, melynek segítségével a programozók szinte közvetlenül vezérelhetik a grafikus kártyát, segítségükkel 3 dimenziós alakzatokat rajzolhatnak ki, és a kirajzolás módját szabályozhatják. Széleskörűen használják a virtuális valóság létrehozatalában, a tudományos élet különböző területein, és szimulátorok esetében is.
 
 ### OpenGL összekötése QT-vel
 
 A projektfájlt (`.pro`) egészítsük ki a következőkkel:
 `QT += opengl`
-, illetve `LIBS += -lOpengl32`
-A headerbe írjuk be az alábbi könyvtárakat:
+, illetve:
+
+- **Windows:** `LIBS += -lOpengl32`
+- **Linux:** `LIBS += -lGL` (szükséges csomag: `sudo apt install libgl-dev` vagy `sudo dnf install mesa-libGL-devel`)
+- **macOS:** `LIBS += -framework OpenGL`
+
+  A headerbe írjuk be az alábbi könyvtárakat:
 
 ```
 #include <QOpenGLWindow>

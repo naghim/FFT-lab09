@@ -25,7 +25,8 @@ static const char *fragmentShaderSource =
     "   gl_FragColor = col;\n"
     "}\n";
 
-void MainWindow::initialize() {
+void MainWindow::initialize()
+{
     // Alapértelmezett shaderek beállítása
     m_program = new QOpenGLShaderProgram(this);
     m_program->addShaderFromSourceCode(QOpenGLShader::Vertex, vertexShaderSource);
@@ -39,15 +40,17 @@ void MainWindow::initialize() {
     m_posAttr = m_program->attributeLocation("posAttr");
     m_colAttr = m_program->attributeLocation("colAttr");
     m_matrixUniform = m_program->uniformLocation("matrix");
-    setTitle("Rectangles and Triangles");
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    setTitle("Háromszög OpenGL-ben");
     resize(500, 500);
 
     // Ha szeretnénk, hogy minden pillanatban automatikusan frissüljön a kép,
     // használjuk az OpenGLWindow-unk a setAnimating függvényét
-    //setAnimating(true);
+    // setAnimating(true);
 }
 
-void MainWindow::render() {
+void MainWindow::render()
+{
     // Beállítjuk a tényleges ablak dimenziót, ahol megjelenítjük a képet.
     // Az ablak dimenziója és az OpenGL által renderelt kép dimenziója meg kell egyezzen.
     const qreal retinaScale = devicePixelRatio();
@@ -62,7 +65,7 @@ void MainWindow::render() {
     // Úgy kell elképzelni, mintha a virtuális térben lenne egy láthatatlan kamera
     // amely egy bizonyos pontra néz, és így vetíti a képet a képernyőre.
     QMatrix4x4 matrix;
-    matrix.perspective(60.0f, (float) width() / height(), 0.1f, 100.0f);
+    matrix.perspective(60.0f, (float)width() / height(), 0.1f, 100.0f);
     matrix.translate(translate);
 
     m_program->setUniformValue(m_matrixUniform, matrix);
@@ -73,8 +76,7 @@ void MainWindow::render() {
     static const GLfloat vertices[] = {
         -0.5f, -0.5f,
         0.5f, 0.5f,
-        0.5f, -0.5f
-    };
+        0.5f, -0.5f};
 
     static const GLfloat colors[] = {
         1.0f, 0.0f, 0.0f, // Piros
@@ -101,8 +103,10 @@ void MainWindow::render() {
     ++m_frame;
 }
 
-bool MainWindow::event(QEvent *event) {
-    if (event->type() != QEvent::KeyPress) {
+bool MainWindow::event(QEvent *event)
+{
+    if (event->type() != QEvent::KeyPress)
+    {
         return OpenGLWindow::event(event);
     }
 
@@ -110,7 +114,8 @@ bool MainWindow::event(QEvent *event) {
 
     // Billentyűnyomásra frissíthető a kamera pozíciója
     // Ezután megkérjük, hogy rajzoljon egy új frame-et
-    switch (ke->key()) {
+    switch (ke->key())
+    {
     case Qt::Key_W:
         translate.setZ(translate.z() + 0.5);
         requestUpdate();

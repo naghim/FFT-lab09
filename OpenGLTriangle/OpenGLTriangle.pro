@@ -1,6 +1,8 @@
 QT       += core gui opengl
 
-LIBS += -lOpengl32
+win32: LIBS += -lOpengl32
+unix:!macx: LIBS += -lGL
+macx: LIBS += -framework OpenGL
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
