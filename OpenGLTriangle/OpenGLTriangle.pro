@@ -1,10 +1,10 @@
 QT       += core gui opengl
+QT       += widgets
+
 
 win32: LIBS += -lOpengl32
 unix:!macx: LIBS += -lGL
 macx: LIBS += -framework OpenGL
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
@@ -14,12 +14,10 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp \
-    openglwindow.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    mainwindow.h \
-    openglwindow.h
+    mainwindow.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
